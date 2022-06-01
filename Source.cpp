@@ -4,6 +4,7 @@
 #include "struct.h"
 
 
+
 int main(void) {
 	setlocale(LC_ALL, "Russian");
 	/*
@@ -46,7 +47,9 @@ int main(void) {
 	std::cin >> answer;
 	std::cin.ignore();
 	switch (answer) {
-		case 1: Bar(answer, Attributes); break;
+		case 1: 
+			Attributes.Intelligence++;
+			Bar(answer, Attributes); break;
 		case 2: Bulldozer(answer, Attributes); break;
 		default: std::cout << "Такого выбора не существует!\n"; break;
 	}

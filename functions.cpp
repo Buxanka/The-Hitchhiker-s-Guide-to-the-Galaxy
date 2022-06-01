@@ -4,6 +4,9 @@
 #include <time.h>
 #include <string>
 
+bool Marvin;
+bool Slart;
+
 int Randomizer(int& n, int x, int y) {
 	srand(time(NULL));
 	n = rand() % (y - x) + x;
@@ -39,9 +42,8 @@ void Bulldozer(int n, characteristics& A) {
 }
 
 void Bar(int n, characteristics& A){
-	Attributes.Intelligence++;
 	system("cls");
-	std::cout << "(+1 Интеллект)\nПо дороге Форд твердит что конец света произойдет через несколько минут.\n" <<
+	std::cout << "По дороге Форд твердит что конец света произойдет через несколько минут.\n" <<
 		"И правда, через несколько минут на планетой завис корабль Вогонов-строителей. Которые\n" <<
 		"должны были снести планету для строительства новой межзвездной автострады.\n\n";
 	system("pause");
@@ -199,10 +201,14 @@ void OnTheGoldenHeart(int n, characteristics& A) {
 
 	std::cout << "Вне зависимости от ответа, Марвин практически ни на что не реагировал и смотрел куда-то в даль\n" <<
 		"пустым взглядом, изредка закатывая глаза.\n";
-	if (Attributes.Intelligence >= 3)
+	if (Attributes.Intelligence >= 2) {
 		std::cout << "Но похоже автостопщики приглянулись ему. Оно и к лучшему, хоть он и не выглядит враждебно.\n\n";
-	else
+		Marvin = true;
+	}
+	else {
 		std::cout << "Похоже он не взлюбил автостопщиков. Но судя по всему ему ничего и никто не нравится в этой жизни.\n\n";
+		Marvin = false;
+	}
 	system("pause");
 	system("cls");
 
@@ -233,7 +239,7 @@ void OnTheGoldenHeart(int n, characteristics& A) {
 		}
 		break;
 	case 2:
-		if (Attributes.Intelligence >= 3) {
+		if (Attributes.Intelligence >= 2) {
 			RestaurantAtTheEndOfTheUniverse(answer, Attributes);
 		}
 		if (Attributes.Strength >= 2) {
@@ -249,6 +255,10 @@ void OnTheGoldenHeart(int n, characteristics& A) {
 		if (Attributes.Strength >= 2) {
 			ArrivalAtMigratea(answer, Attributes);
 		}
+		else {
+			std::cout << "Не хватило силы, чтобы проскачить мимо ракет.\nПохоже это конец...";
+		}
+		break;
 	default: std::cout << "Такого выбора не существует!\n"; break;
 	}
 }
@@ -267,8 +277,26 @@ void RestaurantAtTheEndOfTheUniverse(int n, characteristics& A) {
 	system("pause");
 	system("cls");
 	std::cout << "Неожиданно для героев, на них нападают вогоны, начиная перестрелку прямо ресторане, переворачивая её с ног до головы\n\n";
-	std::cout << "1.;\n2..\n\n";
+	std::cout << "1.Бежать;\n2.Взгляд Зафода зацепился за подозрительного деда, подойти к нему.\n\n";
 	std::cout << "-->  ";
+	int answer;
+	std::cin >> answer;
+	std::cin.ignore();
+	system("cls");
+	switch (answer) {
+	case 1:
+		std::cout << "Зафод все равно отправился к подозрительному деду. Компания растерялась в толпе. И теперь уже не сбежать...\n\n";
+		break;
+	case 2:
+		std::cout << "Дед оказался родным почившим дедом Зафода. Президент сумел выйти в астрал, сам того не заметя.\n" <<
+			"С помощью этой галлюцинации героям удалось выбраться целыми и практически незамеченными.\n+1 Интеллект\n\n";
+		Attributes.Intelligence++;
+		system("pause");
+		system("cls");
+		ZMTF(answer, Attributes);
+		break;
+	default: std::cout << "Такого выбора не существует!\n"; break;
+	}
 }
 
 void ArrivalAtMigratea(int n, characteristics& A) {
@@ -375,7 +403,7 @@ void DialogueWithMarvin(int n, characteristics& A) {
 		Attributes.Strength++;
 	}
 	system("cls");
-	std::cout << "(+1 Интеллект)";
+	std::cout << "\n\n(+1 Интеллект)";
 	Attributes.Intelligence++;
 	system("pause");
 	system("cls");
@@ -388,5 +416,304 @@ void Slartibartfast(int n, characteristics& A) {
 		"начинает расказывать о Магратеи, что это за планета.Это даже не планета, а станция про\n" << 
 		"производству планет для богатых жителей вселенной по заказу.А так же он говорит что «Люди»\n" <<
 		"— не самые разумные создания на земле, а только третьи по разуму.Вторыми были дельфины.\n\n";
+	system("pause");
+	system("cls");
+	std::cout << "Старик предлагает узнать кто был самым разумным существом на Земле. Чтобы это\n" <<
+		"выяснить нужно разгадать простой шифр, который знает каждый ребенок во всей галлактике.\n\n";
+	std::cout << "1.Попробовать разгадать;\n2.Лучше не играть в игры с эти стариком.\n\n";
+	std::cout << "-->  ";
+	int answer;
+	std::cin >> answer;
+	std::cin.ignore();
+	system("cls");
+	switch (answer) {
+	case 1:
+		if (Attributes.Intelligence >= 3) {
+			Slart = true;
+			std::cout << "Слартибартфаст протягивает мятый листочек. По его взгляду видно,\n" <<
+				"что эта затея приносит ему массу удовольствия:\n\n";
+			std::cout << "ЗАГАДКА\n";
+			std::cout << "Луп иб туёолпя щфсщйу,\n" <<
+				"Уполйн дпмптин рйъйу,\n" <<
+				"Тьс пу ойц оё фубйщэ.\n" <<
+				"Гтён гпсбн - гпсйщлб...\n\n";
+			std::cout << "1.Кит;\n2.Мышь;\n3.Ворона;\n4.Слон;\n5.Попугай.\n\n";
+			std::cout << "-->  ";
+			int mouse;
+			std::cin >> mouse;
+			std::cin.ignore();
+			system("cls");
+			if (mouse == 2) {
+				std::cout << "Теперь старик приятно удивлен! Он явно не ждал верного ответа на его загадку.\n";
+				std::cout << "+2 Интеллект\n\n";
+				Attributes.Intelligence + 2;
+				system("pause");
+				system("cls");
+				BuildingPlanets(mouse, Attributes);
+			}
+			else {
+				std::cout << "Старик ухмыльнулся. Он был уверен, что Артур не сможет отгадать, и оказался прав.\n\n";
+				system("pause");
+				system("cls");
+				BuildingPlanets(mouse, Attributes);
+			}
+		}
+		else {
+			std::cout << "Слартибартфаст протягивает мятый листочек.По его взгляду видно, \n" <<
+				"что эта затея приносит ему массу удовольствия\n\n";
+			std::cout << "Но у нас не хватает Интеллекта для прочтения и решения загаки...\n";
+			std::cout << "Слартибартфаст заметно погрустнел...\n\n";
+			Slart = true;
+			BuildingPlanets(answer, Attributes);
+		}
+		break;
+	case 2: 
+		Slart = false;
+		std::cout << "Слартибартфаст заметно погрустнел...\n\n";
+		system("pause");
+		system("cls");
+		BuildingPlanets(answer, Attributes);
+		break;
+	default: std::cout << "Такого выбора не существует!\n"; break;
+	}
+}
+
+void BuildingPlanets(int n, characteristics& A) {
+	std::cout << "Артур и Слартибартфаст отправляются к тому месту, где магратейцы строят планеты.\n" <<
+		"Старик показывает пальцем в сторону планеты, Артур моментально узнает свою планету.\n" <<
+		"Земля сконструирована заново.Артур понимает что все это время люди были лишь шестеренками\n" <<
+		"в большом суперкомпьютере, а управляли ими МЫШИ.\n\n";
+	system("pause");
+	system("cls");
+	std::cout << "Дальше путеводитель сообщает об истории Думателя. Рассказывает об Лонквилле и Фуке,\n" <<
+		"которые задали Главный вопрос о вселенной и всем таком.Думатель сообщает, что для ответа\n" <<
+		"на вопрос потребуются 7,5 миллионов лет, Вромвовел и Маджикхис боятся потерять работу,\n" <<
+		"по той причине что они философы и они не могут допустить что бы был дан ответ на вопрос\n" <<
+		"смысла жизни и об вселенной и всем таком.\n\n И через 7,5 миилионов лет Думатель дает ответ\n" <<
+		"на вопрос: 42.\n\n";
+	system("pause");
+	system("cls");
+	std::cout << "Тем временем Зафод, Триллиан и Форд очнулись в иллюзорном мире, сделанном магратейцами.\n" <<
+		"Эта планеты была по колено в рыбе.\n\n";
+	std::cout << "1.Посмотреть следующие миры;\n2.Постараться выбраться.\n\n";
+	std::cout << "-->  ";
+	int answer;
+	std::cin >> answer;
+	std::cin.ignore();
+	system("cls");
+	switch (answer) {
+	case 1:
+		std::cout << "До самого горизонта во все стороны расстилилась гладкая золотая поверхность.\n" <<
+			"Она сияла словно... нет, ничто во Вселенной не сият так, как планета из чистого золота.\n\n" <<
+			"...\n\n" <<
+			"Побережье у багряного моря было усыпано маленькими желтыми и зелеными камнями, явно драгоценными;\n" <<
+			"поблизости, под игривым розовато-лиловым зонтом от солнца, стоял столик из чистого серебра.\n" <<
+			"С неба падали пятьсот голых парашютисток.\n\n";
+		std::cout << "+1 ловкость\n\n";
+		Attributes.Dexterity++;
+		system("pause");
+		system("cls");
+		std::cout << "Вскоре послышались голоса, и всю компанию попросили пройти...\n\n";
+		system("pause");
+		system("cls");
+		Mice(answer, Attributes);
+		break;
+	case 2:
+		std::cout << "Компания подняла страшный гвалт - обращали на себя внимание.\n" <<
+			"Как оказалось, их поместили сюда, чтобы как-то занять, пока неизвестные к чему-то готовоятся...\n" <<
+			"Но из-за излишнего шума их переместили в темную и скучную каморку.\n\n";
+		std::cout << "+1 Сила";
+		Attributes.Strength++;
+		system("pause");
+		system("cls");
+		Mice(answer, Attributes);
+		break;
+	default: std::cout << "Такого выбора не существует!\n"; break;
+	}
+}
+
+void Mice(int n, characteristics& A) {
+	std::cout << "Артур отправляется к мышам что бы узнать где его друзья.\n";
+	std::cout << "Он встречает Форда, Зафода и Триллиана за роскошной трапезой,\n" <<
+		"и видит двух белых говорящих мышек. Мыши хотят забрать мозг Артура, так как Земля была машиной,\n" <<
+		"которая должна была задать Главный вопрос, ответ на который было 42. А Артур - это единственное, что\n" <<
+		"осталось от этой планеты.\n\n";
+	system("pause");
+	system("cls");
+	std::cout << "Триллиан и остальные пытаются его спасти...\n\n";
+	std::cout << "1.Попробовать договориться с мышами;\n2.Бежать.\n\n";
+	std::cout << "-->  ";
+	int answer;
+	std::cin >> answer;
+	std::cin.ignore();
+	system("cls");
+	switch (answer) {
+	case 1:
+		std::cout << "Пока путешественики пытались договориться с мышами, на Мигратею вторглась полиция и\n" <<
+			"началась перестрелка. Выбраться никому не удалось...\n\n";
+		system("pause");
+		system("cls");
+		break;
+	case 2:
+		std::cout << "Герои начинают бегство. В это время на Мигратею вторглась полиция. Не смотря на обстрел,\n" <<
+			"им удалось удрать. Со временем стрельба прекращается...\n\n";
+		system("pause");
+		system("cls");
+		Police(answer, Attributes);
+		break;
+	default: std::cout << "Такого выбора не существует!\n"; break;
+	}
+}
+
+void Police(int n, characteristics& A) {
+	std::cout << "1.Проверить полицейских;\n2.Не проверять.\n\n";
+	std::cout << "-->  ";
+	int answer;
+	std::cin >> answer;
+	std::cin.ignore();
+	system("cls");
+	switch (answer) {
+	case 1:
+		if (Marvin) {
+			std::cout << "Герои обнаруживают причину смерти полицейских — полицейский корабль покончил с собой\n" <<
+				"после того как Марвин поговорил с ним о мире.\n\n";
+			system("pause");
+			system("cls");
+			PolicePlus(answer, Attributes);
+		}
+		else {
+			std::cout << "Полиция была в засаде. Героев ловят. Похоже приключение подошло к концу...\n\n\n\n";
+			std::cout << "А Марвин даже не беспокоился...\n";
+			system("pause");
+			system("cls");
+		}
+		break;
+	case 2:
+		system("pause");
+		system("cls");
+		PolicePlus(answer, Attributes);
+		break;
+	default: std::cout << "Такого выбора не существует!\n"; break;
+	}
+}
+
+void PolicePlus(int n, characteristics& A) {
+	if (Slart) {
+		std::cout << "Герои улетают на летающей машине Слартибартфаста.";
+		system("pause");
+		system("cls");
+		HappyEnd1(n, Attributes);
+	}
+	else {
+		std::cout << "Слартибартфаст забрал свою летающую машину и Герои остаются на планете без возможности выбраться...\n\n";
+	}
+}
+
+void HappyEnd1(int n, characteristics& A) {
+	std::cout << "HAPPY END\n\n";
+}
+
+void ZMTF(int n, characteristics& A) {
+	std::cout << "\n1.Отправиться с Зафодом и Марвином в издательтво Автостопом по Галлактике(Ловкость > 3);\n" <<
+		"2.Отправиться с Триллиан и Фордом на Золотое Сердце.\n\n";
+	std::cout << "-->  ";
+	int answer;
+	std::cin >> answer;
+	std::cin.ignore();
+	system("cls");
+	switch (answer) {
+	case 1:
+		if (Attributes.Dexterity < 3) {
+			std::cout << "Ловкости не хватило, чтобы отправиться в издательство. Нужно остаться с Триллиан и Фордом.\n\n";
+			TF(answer, Attributes);
+			system("pause");
+			system("cls");
+		}
+		else
+			PublishingHouse(answer, Attributes);
+		break;
+	case 2: TF(answer, Attributes); break;
+	default: std::cout << "Такого выбора не существует!\n"; break;
+	}
+}
+
+void TF(int n, characteristics& A) {
+
+}
+
+void PublishingHouse(int n, characteristics& A) {
+	std::cout << "У Зафода было сильное предчувствие, что нужно попасть в издательство. Но парень, похожий на неизвестное\n" <<
+		"миру насекомое упорно не давал ему и Марвину попасть в лифт.\n";
+	std::cout << "1.Продолжать попытки попасть в издательство;\n2.Отчаиться и уйти.\n\n";
+	std::cout << "-->  ";
+	int answer;
+	std::cin >> answer;
+	std::cin.ignore();
+	system("cls");
+	switch (answer) {
+	case 1:
+		std::cout << "Пока президент пытался уговорить насекомое пропустить его, к нему подошел незнакомец.\n" <<
+			"Он рассказал, что директор издательства сейчас находится в круизе, и пригласил Зафода подняться к нему\n" <<
+			"в кабинет, провожая мимо насекомого к лифту.\n\n";
+		std::cout << "Незнакомец очень много филосовствовал, и президент слушал его в пол уха: ... бла...блабла....бла...\n" <<
+			"..блабла бла....блабла...бла..42...бла...блаблаблабла.........\n+1 Интеллект\n\n";
+		Attributes.Intelligence++;
+		system("pause");
+		system("cls");
+		AttackOnThePublishingHouse(answer, Attributes);
+	case 2:
+		std::cout << "Зафод и Марвин отошли от стойки...\n\n";
+		system("pause");
+		system("cls");
+		AttackOnThePublishingHouse(answer, Attributes);
+	default: std::cout << "Такого выбора не существует!\n"; break;
+	}
+}
+
+void AttackOnThePublishingHouse(int n, characteristics& A) {
+	std::cout << "Тем временем офис издательства атакуют обитатели второй планеты системы Фрогстар, которые были ярыми\n" <<
+		"конкурентами, и они конечно же хотели иметь власть над таким мировым издателем которого читают все во вселенной.\n" <<
+		"Они ловят и сажают Зафода в пыточное устройство...\n";
+	std::cout << "Перед запуском Зафорд обнаружил цифровое окно в котором было доступно для ввода две цифры: ";
+	int answer;
+	std::cin >> answer;
+	std::cin.ignore();
+	system("cls");
+	int rand;
+	Randomizer(rand, 1, 2);
+	if (answer == 42) {
+		std::cout << "Это устройство, которое уничтожает души существ помещенных туда, являя им, насколько те малы\n" <<
+			"по сравнению с бесконечной Вселенной.К счастью для Зафода устройство не действует, так как выясняется,\n" <<
+			"что тот — одна из самых важных вещей во Вселенной.";
+		system("pause");
+		system("cls");
+		Skyscraper(answer, Attributes);
+	}
+	else {
+		if (rand = 1) {
+			std::cout << "Это устройство, которое уничтожает души существ помещенных туда, являя им, насколько те малы\n" <<
+				"по сравнению с бесконечной Вселенной. Это очень страшный конец...\n\n";
+		}
+		else {
+			std::cout << "Это устройство, которое уничтожает души существ помещенных туда, являя им, насколько те малы\n" <<
+				"по сравнению с бесконечной Вселенной.К счастью для Зафода устройство не действует, так как выясняется,\n" <<
+				"что тот — одна из самых важных вещей во Вселенной.";
+			system("pause");
+			system("cls");
+			Skyscraper(answer, Attributes);
+		}
+	}
+}
+
+void Skyscraper(int n, characteristics& A) {
+	std::cout << "После этого начинается грандиозный побег Зафода. Но ему нужно спрыгнуть в послнднего этажа высотки.\n" <<
+		"И не известно выживет ли он при прыжке...\n";
+	std::cout << "1.Прыжок;\n2.Остаться в здании.\n";
+	std::cout << "-->  ";
+	int answer;
+	std::cin >> answer;
+	std::cin.ignore();
+	system("cls");
+
 }
 
